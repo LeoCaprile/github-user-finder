@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+	.card-container {
+		grid-template-columns: auto !important;
+	}
+
+	.input-container {
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+	}
+}
