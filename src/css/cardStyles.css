@@ -1,13 +1,14 @@
 .card-container {
 	display: grid;
-	justify-content: center;
+
+	place-content: center;
 	grid-template-columns: auto auto auto;
 }
 
 .card {
 	display: grid;
+	align-self: center;
 	justify-content: center;
-	width: fit-content;
 	height: fit-content;
 	border-radius: 10px;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.367);

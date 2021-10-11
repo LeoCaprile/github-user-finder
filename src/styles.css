@@ -1,10 +1,11 @@
 @import url(./css/mobileQueries.css);
 @import url(./css/cardStyles.css);
 @import url(./css/animations.css);
-
+@import url(./css/landingPage.css);
 :root {
 	--text-color: #000000;
 	--input-outline-color: #fca21138;
+	--text-color-invalid: rgba(253, 141, 141, 0.541);
 }
 
 html {
@@ -30,6 +31,10 @@ i {
 	padding: 5px;
 }
 
+.unhide {
+	display: inherit !important;
+}
+
 .page-header {
 	display: grid;
 	justify-content: center;
@@ -47,7 +52,6 @@ i {
 
 .text-input {
 	background-color: #fff;
-	border-color: #dbdbdb;
 	border: 2px solid rgb(10 10 10 / 15%);
 	box-shadow: unset 0.625em 0.625em 0.125em rgb(10 10 10 / 15%);
 	outline-color: var(--input-outline-color);
@@ -56,6 +60,14 @@ i {
 	height: 2.5em;
 	font-size: 1.2rem;
 	width: 20rem;
+}
+.text-input-invalid {
+	background-color: var(--text-color-invalid) !important;
+}
+.hidden-caption {
+	display: none;
+	color: red;
+	font-style: italic;
 }
 
 .button {

@@ -1,6 +1,5 @@
 import './styles.css';
-
-$.create = (element) => document.createElement(element);
+import './js/jqueryPlugins';
 
 const fetchUsersURL = (name) => `https://api.github.com/search/users?q=${name}&per_page=9`;
 
@@ -52,18 +51,25 @@ const displayCards = (name) => {
 	});
 };
 
-const searchUsers = () => {
-	$('.button').click(() => {
-		const inputTextValue = $('.text-input').val();
+const conditionToDisplay = () => {
+	const inputTextValue = $('.text-input').val();
+	if (inputTextValue.length >= 4 && !/\W|_/g.test(inputTextValue)) {
 		$('.card-container').empty();
 		displayCards(inputTextValue);
+	} else {
+		$('.text-input').addTemporaryClass('text-input-invalid', 1500);
+		$('.hidden-caption').addTemporaryClass('unhide', 2500);
+	}
+};
+
+const searchUsers = () => {
+	$('.button').click(() => {
+		conditionToDisplay();
 	});
 
 	$('.text-input').keyup((e) => {
 		if (e.keyCode == '13') {
-			const inputTextValue = $('.text-input').val();
-			$('.card-container').html('');
-			displayCards(inputTextValue);
+			conditionToDisplay();
 		}
 	});
 };
