@@ -28,10 +28,12 @@ const userCardTemplate = (profileImg, name, followers, repos = 0) =>
 
 `;
 
+const loadingSpinerTemplate = `<div class="spinner"></div>`;
+
 const displayCards = (name) => {
 	$.get(fetchUsersURL(name), (data) => {
 		const usersList = data.items;
-
+		$('.card-container').html(loadingSpinerTemplate);
 		for (let user of usersList) {
 			const userName = user.login;
 
@@ -44,9 +46,8 @@ const displayCards = (name) => {
 				a.setAttribute('href', user.html_url);
 				a.setAttribute('target', '__blank');
 				a.innerHTML = userCardTemplate(userProfileImg, userName, userFollowers, userRepos);
-
 				$('.card-container').append(a);
-			});
+			}).done(() => $('.spinner').remove());
 		}
 	});
 };
@@ -54,7 +55,7 @@ const displayCards = (name) => {
 const searchUsers = () => {
 	$('.button').click(() => {
 		const inputTextValue = $('.text-input').val();
-		$('.card-container').html('');
+		$('.card-container').empty();
 		displayCards(inputTextValue);
 	});
 
