@@ -1,0 +1,12 @@
+.landing-page {
+	display: grid;
+	place-content: center;
+}
+
+.landing-text {
+}
+
+.landing-img {
+	justify-self: center;
+	padding: 2rem;
+}
